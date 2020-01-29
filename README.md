@@ -6,4 +6,8 @@ Creating web site in Azure.
 
 ## step 2
 Creating a dotnet core web application
+![Creating a dotnet core web application](https://github/mkokabi/githubdeploy/images/image2.png)
+
+## step 2
+Pushing the web application to github.
 
