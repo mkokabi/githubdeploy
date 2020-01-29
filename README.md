@@ -22,17 +22,24 @@ git add .
 git commit -m "First commit"
 git push --set-upstream origin master
 ```
-
-
 ### step 4
+Get the publish profile of your Azure web app.
+![Get the publish profile](https://github/mkokabi/githubdeploy/images/image6.png)
+
+### step 5
+Store the contents of the publish profile in the repository secret with a name such as azureWebAppPublishProfile.
+![Creating repository secret](https://github/mkokabi/githubdeploy/images/image7.png)
+
+
+### step 6
 Creating workflow
 ![Switching to actions tab](https://github/mkokabi/githubdeploy/images/image4.png)
 
-### step 5
+### step 7
 Select start a workflow yourself
 ![Start a new workflow](https://github/mkokabi/githubdeploy/images/image5.png)
 
-### step 6
+### step 8
 Replace the steps with
 ```yaml
       - uses: actions/checkout@v2
@@ -55,9 +62,4 @@ Replace the steps with
 - The *github* in dotnet publish command is the name of my web application. You can replace it with your project name. 
 - The *GithubDotNetCore* in the app-name parameter is the name of my Azure Web App. 
 
-### step 7
-Get the publish profile of your Azure web app.
-![Get the publish profile](https://github/mkokabi/githubdeploy/images/image6.png)
 
-### step 8
-Store the contents of the publish profile in the repository secret. 
