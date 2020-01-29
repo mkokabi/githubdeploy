@@ -7,7 +7,57 @@ Creating web site in Azure.
 ## step 2
 Creating a dotnet core web application
 ![Creating a dotnet core web application](https://github/mkokabi/githubdeploy/images/image2.png)
+For this sample I named the web application *github*
 
-## step 2
+## step 3
 Pushing the web application to github.
+![Getting the remote URL](https://github/mkokabi/githubdeploy/images/image3.png)
 
+```shell
+cd github
+git init
+git remote add origin https://github.com/mkokabi/githubdeploy.git
+git pull origin master
+git add .
+git commit -m "First commit"
+git push --set-upstream origin master
+```
+
+
+### step 4
+Creating workflow
+![Switching to actions tab](https://github/mkokabi/githubdeploy/images/image4.png)
+
+### step 5
+Select start a workflow yourself
+![Start a new workflow](https://github/mkokabi/githubdeploy/images/image5.png)
+
+### step 6
+Replace the steps with
+```yaml
+      - uses: actions/checkout@v2
+        name: checkout
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.100' # SDK Version to use.
+      - run: dotnet build --configuration Release
+
+      - name: dotnet publish
+        run: |
+          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/github 
+      - name: 'Run Azure webapp deploy action using publish profile credentials'
+        uses: azure/webapps-deploy@v1
+        with: 
+          app-name: GithubDotNetCore  # Replace with your app name
+          publish-profile: ${{ secrets.azureWebAppPublishProfile }} 
+          package: ${{env.DOTNET_ROOT}}/github 
+```
+- The *github* in dotnet publish command is the name of my web application. You can replace it with your project name. 
+- The *GithubDotNetCore* in the app-name parameter is the name of my Azure Web App. 
+
+### step 7
+Get the publish profile of your Azure web app.
+![Get the publish profile](https://github/mkokabi/githubdeploy/images/image6.png)
+
+### step 8
+Store the contents of the publish profile in the repository secret. 
