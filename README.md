@@ -27,7 +27,7 @@ Get the publish profile of your Azure web app.
 ![Get the publish profile](https://github.com/mkokabi/githubdeploy/blob/master/images/image6.png)
 
 ### step 5
-Store the contents of the publish profile in the repository secret with a name such as azureWebAppPublishProfile.
+Store the contents of the publish profile in the repository secret with a name such as *azureWebAppPublishProfile*.
 ![Creating repository secret](https://github.com/mkokabi/githubdeploy/blob/master/images/image7.png)
 
 
@@ -61,5 +61,15 @@ Replace the steps with
 ```
 - The *github* in dotnet publish command is the name of my web application. You can replace it with your project name. 
 - The *GithubDotNetCore* in the app-name parameter is the name of my Azure Web App. 
+
+### step 9
+Commit your changes in the yaml file (mail.yml). You can either create a new branch or directly commit it in master.
+
+### step 10
+The workflow is set to trigger on the push. As the yaml file has been pushed the worflow would be triggered. Review the Actions tab and all the steps of the workflow should get completed after a few minutes.
+![The workflow complete](https://github.com/mkokabi/githubdeploy/blob/master/images/image8.png)
+
+Now your application should be deployed to your Azure web site.
+![Perfect result](https://github.com/mkokabi/githubdeploy/blob/master/images/image9.png)
 
 
